@@ -1,4 +1,6 @@
-public interface Scheduler
+import java.util.Observer;
+
+public interface Scheduler extends Observer
 {
-    public ProcessEvent getProcessEvent();
+    ProcessEvent getProcessEvent();
 }
