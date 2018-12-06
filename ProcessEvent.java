@@ -1,4 +1,4 @@
-public abstract class ProcessEvent implements Comparable<ProcessEvent> {
+public class ProcessEvent implements Comparable<ProcessEvent> {
     int time;
     Process process;
 
