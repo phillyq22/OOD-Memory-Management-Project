@@ -49,7 +49,50 @@ public class FirstFit implements MemManAlgo {
     public AllocedProcess deallocate(AllocedProcess p){
         //remove process p
 
+        ListIterator<MemoryNode> it = memory.listIterator();
+        boolean foundLocation = false;
+        int offset = 0;
+        int processOffset = p.getOffset();
+        MemoryNode currentNode = null;
+
+        //find node with the allocated process
+        while(offset < processOffset && it.hasNext()) {
+            currentNode = it.next();
+            offset += currentNode.getSize();
+        }
+        currentNode = it.next(); //move on to the correct node when you find the right offset
+
+        //remove the process
+        if(offset == processOffset) {
+            currentNode.setProcess(null);
+        }
+
+        //combine consecutive empty cells into one empty cell
+        fixEmptyCells();
+
+        for(MemoryNode node : memory) {
+            System.out.printf("Node:\n\tSize: %4d   Process: %s\n\n", node.getSize(), node.getProcess());
+        }
 
         return p;
+    }
+
+    private void fixEmptyCells() {
+        ListIterator<MemoryNode> it = memory.listIterator();
+
+        while(it.hasNext()) {
+            MemoryNode currentNode = it.next();
+            if(currentNode.getProcess() == null && it.hasNext()) {
+                //check if the node after it is empty
+                MemoryNode nextNode = it.next();
+                if(nextNode.getProcess() == null) {
+                    int size = nextNode.getSize();
+                    it.remove();
+
+                    currentNode.setSize(currentNode.getSize() + size);
+                    it.previous();
+                }
+            }
+        }
     }
 }

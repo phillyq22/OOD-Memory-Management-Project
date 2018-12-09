@@ -7,6 +7,10 @@ public class AllocedProcess extends Process {
         this.offset = offset;
     }
 
+    public int getOffset() {
+        return offset;
+    }
+
     public String toString() {
         return super.toString() + " offset=" + this.offset;
     }
