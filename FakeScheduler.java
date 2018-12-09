@@ -1,4 +1,3 @@
-import com.sun.org.apache.regexp.internal.RE;
 
 import java.util.*;
 
@@ -15,9 +14,14 @@ import java.util.*;
         queue.add(new AllocEvent(5, new Process(80, 15)));
     }
 
-    public ProcessEvent getProcessEvent()
+    public ProcessEvent getNextEvent()
     {
         return queue.poll();
+    }
+
+    @Override
+    public void addEvent(ProcessEvent event) {
+        queue.add(event);
     }
 
     @Override
@@ -28,13 +32,14 @@ import java.util.*;
                 break;
             case "RemoveEvent":
                 handleRemove((RemoveEvent)arg);
+                break;
             case "OOMEvent":
                 handleOOM((OOMEvent)arg);
         }
     }
 
     public void handleAdd(AddEvent add){
-        System.out.println("I got an add event");
+        System.out.println("Scheduler got an add event");
         queue.add(new DeallocEvent(add.getTime() + add.getProcess().getLifeTime(), add.getProcess()));
         System.out.println("Scheduler added a new dealloc event based on the add event from MemManager");
     }

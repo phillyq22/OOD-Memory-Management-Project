@@ -1,5 +1,12 @@
 public class Driver {
     public static void main(String[] args){
-        System.out.println("start");
+
+        //Initialize Operating system
+        OperatingSystem OS = OperatingSystem.getInstance();
+        OS.setScheduler(new FakeScheduler());
+        OS.setMemoryManager(new MemoryManager(new FirstFit()));
+
+        //Start running the Operating system
+        OS.run();
     }
 }
