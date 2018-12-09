@@ -31,11 +31,13 @@ public class FirstFit implements MemManAlgo {
 
                 //set rest of unused memory to new node
                 it.add(new MemoryNode(oldSize - p.getSize(), null));
+            } else {
+                offset += node.getSize();
             }
         }
 
         for(MemoryNode node : memory) {
-            System.out.printf("Node:\n\tSize:%d\n\tProcess:%s\n\n", node.getSize(), node.getProcess());
+            System.out.printf("Node:\n\tSize: %4d   Process: %s\n\n", node.getSize(), node.getProcess());
         }
 
         return allocedProc;
