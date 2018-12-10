@@ -26,8 +26,6 @@ public class WorstFit implements MemManAlgo{
                 } else if (worstNode.getSize() < node.getSize()) {
                     worstNode = node;
                 }
-            } else {
-                offset += node.getSize();
             }
         }
 
@@ -49,6 +47,8 @@ public class WorstFit implements MemManAlgo{
                     node.setProcess(ap);
 
                     it.add(new MemoryNode(oldSize - p.getSize(), null));
+                } else {
+                    offset += node.getSize();
                 }
             }
         }
