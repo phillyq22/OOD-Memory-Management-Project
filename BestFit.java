@@ -33,14 +33,12 @@ public class BestFit implements MemManAlgo {
 
         if (bestNode != null) {
             // Allocate the process. Iterate until bestNode is found again.
+            it = memory.listIterator();
             while (it.hasNext() && !foundLocation) {
                 MemoryNode node = it.next();
 
                 //If there is no process and shares the same size as bestNode, the best node has been found.
-                if(
-                        //node.getProcess() == null && node.getSize() == bestNode.getSize()
-                        bestNode == node
-                ) {
+                if(node.getProcess() == null && node.getSize() == bestNode.getSize()) {
                     foundLocation = true;
 
                     int oldSize = node.getSize();
