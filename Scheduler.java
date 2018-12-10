@@ -4,4 +4,5 @@ public interface Scheduler extends Observer
 {
     ProcessEvent getNextEvent();
     void addEvent(ProcessEvent event);
+    void getEvents();
 }

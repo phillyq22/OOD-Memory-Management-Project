@@ -1,12 +1,10 @@
 import java.util.Observable;
 
 public class OperatingSystem extends Observable {
-    //SINGLETON PATTERN
-    private static final OperatingSystem OS = new OperatingSystem();
     private MemoryManager memoryManager;
     private Scheduler scheduler;
 
-    private OperatingSystem() {
+    public OperatingSystem() {
         System.out.println("Operating System created.");
         //add view to observers
     }
@@ -26,21 +24,24 @@ public class OperatingSystem extends Observable {
         System.out.println("Running an event");
 
         //Initialize processEvent
-        ProcessEvent processEvent = scheduler.getNextEvent();
+            scheduler.getEvents();
+            ProcessEvent processEvent = scheduler.getNextEvent();
 
-        while(processEvent != null) {
-            MemEvent event = memoryManager.doEvent(processEvent);
-            setChanged();
-            notifyObservers(event);
-            //Update processEvent
-            processEvent = scheduler.getNextEvent();
-        }
+
+            while (processEvent != null) {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e){
+
+                }
+                scheduler.getEvents();
+                MemEvent event = memoryManager.doEvent(processEvent);
+                setChanged();
+                notifyObservers(event);
+                //Update processEvent
+                processEvent = scheduler.getNextEvent();
+            }
 
         System.out.println("Finished running");
     }
-
-    public static OperatingSystem getInstance() {
-        return OS;
-    }
-
 }
