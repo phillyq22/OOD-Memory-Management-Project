@@ -1,17 +1,21 @@
-
 import java.util.*;
 
  class FakeScheduler implements Scheduler
 {
     private PriorityQueue<ProcessEvent> queue = new PriorityQueue<>();
+    private ProcessSource source;
+    private int time;
 
-    public FakeScheduler()
+    public FakeScheduler(ProcessSource source)
     {
-        queue.add(new AllocEvent(1, new Process(100, 20)));
-        queue.add(new AllocEvent(2, new Process(200, 10)));
-        queue.add(new AllocEvent(3, new Process(50, 30)));
-        queue.add(new AllocEvent(4, new Process(25, 20)));
-        queue.add(new AllocEvent(5, new Process(80, 15)));
+        this.source = source;
+        time = 0;
+    }
+
+    public void getEvents(){
+        while (source.hasNext()){
+            addEvent(new AllocEvent(++time, source.getNextProcess()));
+        }
     }
 
     public ProcessEvent getNextEvent()
@@ -41,16 +45,19 @@ import java.util.*;
     public void handleAdd(AddEvent add){
         System.out.println("Scheduler got an add event");
         queue.add(new DeallocEvent(add.getTime() + add.getProcess().getLifeTime(), add.getProcess()));
+        time = add.getTime();
         System.out.println("Scheduler added a new dealloc event based on the add event from MemManager");
     }
 
     public void handleRemove(RemoveEvent remove){
         System.out.println("I got a remove event, but I don't care");
+        time = remove.getTime();
     }
 
     public void handleOOM(OOMEvent oom){
         System.out.println("I got an OOM Event");
         queue.add(new AllocEvent(queue.peek().getTime() + 1, oom.getProcess()));
+        time = oom.getTime();
         System.out.println("Scheduler has placed process that Memory Manager could not allocate behind" +
                 " next process event");
     }
