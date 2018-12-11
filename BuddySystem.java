@@ -90,8 +90,8 @@ public class BuddySystem implements MemManAlgo {
         MemoryNode curr = null;
         MemoryNode next = null;
         boolean complete = false;
+        curr = it.next();
         while(it.hasNext() && !complete) {
-            curr = it.next();
             int size1 = curr.getSize();
             if(it.hasNext())
             {
@@ -106,6 +106,7 @@ public class BuddySystem implements MemManAlgo {
      	                complete = true;//You're done with this loop
      	                fixEmptyCells();//Repeat the process from the start of the linked list.
      	            }
+                    else curr = next;
                  }
             }
         }
