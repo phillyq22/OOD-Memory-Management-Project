@@ -1,10 +1,12 @@
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class BuddySystem implements MemManAlgo {
+public class BuddySystem implements MemManAlgo 
+{
     private LinkedList<MemoryNode> memory;
  
-    public BuddySystem(int memorySize) {
+    public BuddySystem(int memorySize) 
+    {
         memory = new LinkedList<>();
         memory.add(new MemoryNode(memorySize, null));
     }
@@ -47,14 +49,16 @@ public class BuddySystem implements MemManAlgo {
             }
         }
 
-        for(MemoryNode node : memory) {
+        for(MemoryNode node : memory) 
+        {
             System.out.printf("Node:\n\tSize: %4d   Process: %s\n\n", node.getSize(), node.getProcess());
         }
 
         return ap;
     }
 
-    public AllocedProcess deallocate(AllocedProcess p) {
+    public AllocedProcess deallocate(AllocedProcess p) 
+    {
         //remove process p
 
         ListIterator<MemoryNode> it = memory.listIterator();
@@ -71,27 +75,31 @@ public class BuddySystem implements MemManAlgo {
         currentNode = it.next(); //move on to the correct node when you find the right offset
 
         //remove the process
-        if(offset == processOffset) {
+        if(offset == processOffset) 
+        {
             currentNode.setProcess(null);
         }
 
         //combine consecutive empty cells into one empty cell
         fixEmptyCells();
 
-        for(MemoryNode node : memory) {
+        for(MemoryNode node : memory) 
+        {
             System.out.printf("Node:\n\tSize: %4d   Process: %s\n\n", node.getSize(), node.getProcess());
         }
 
         return p;
     }
 
-    private void fixEmptyCells() {
+    private void fixEmptyCells() 
+    {
         ListIterator<MemoryNode> it = memory.listIterator();
         MemoryNode curr = null;
         MemoryNode next = null;
         boolean complete = false;
         curr = it.next();
-        while(it.hasNext() && !complete) {
+        while(it.hasNext() && !complete) 
+        {
             int size1 = curr.getSize();
             if(it.hasNext())
             {
@@ -106,7 +114,10 @@ public class BuddySystem implements MemManAlgo {
      	                complete = true;//You're done with this loop
      	                fixEmptyCells();//Repeat the process from the start of the linked list.
      	            }
-                    else curr = next;
+                    else 
+                    {
+                    	curr = next;
+                    }
                  }
             }
         }

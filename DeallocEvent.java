@@ -1,14 +1,16 @@
-public class DeallocEvent extends ProcessEvent {
-
+public class DeallocEvent extends ProcessEvent 
+{
     private AllocedProcess process;
 
-    public DeallocEvent(int time, AllocedProcess process){
+    public DeallocEvent(int time, AllocedProcess process)
+    {
         this.time = time;
         this.process = process;
     }
 
     @Override
-    public AllocedProcess getProcess() {
+    public AllocedProcess getProcess() 
+    {
         return process;
     }
 }

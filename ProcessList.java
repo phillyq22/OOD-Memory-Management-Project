@@ -1,11 +1,12 @@
 import java.util.LinkedList;
-import java.util.List;
 
-public class ProcessList implements ProcessSource {
+public class ProcessList implements ProcessSource
+{
 
     private LinkedList<Process> processList;
 
-    public ProcessList(){
+    public ProcessList()
+    {
         processList = new LinkedList<>();
         processList.add(new Process(100, 20));
         processList.add(new Process(200, 10));
@@ -17,11 +18,13 @@ public class ProcessList implements ProcessSource {
         processList.add(new Process(1000, 30));
     }
 
-    public Process getNextProcess(){
+    public Process getNextProcess()
+    {
         return processList.pop();
     }
 
-    public boolean hasNext(){
+    public boolean hasNext()
+    {
         return !processList.isEmpty();
     }
 }

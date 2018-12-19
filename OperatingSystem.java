@@ -1,26 +1,31 @@
 import java.util.Observable;
 
-public class OperatingSystem extends Observable {
+public class OperatingSystem extends Observable
+{
     private MemoryManager memoryManager;
     private Scheduler scheduler;
 
-    public OperatingSystem() {
+    public OperatingSystem() 
+    {
         System.out.println("Operating System created.");
         //add view to observers
     }
 
-    public void setMemoryManager(MemoryManager memoryManager) {
+    public void setMemoryManager(MemoryManager memoryManager)
+    {
         this.memoryManager = memoryManager;
         System.out.println("Operating System memory manager has been set.");
     }
 
-    public void setScheduler(Scheduler scheduler) {
+    public void setScheduler(Scheduler scheduler)
+    {
         addObserver(scheduler);
         this.scheduler = scheduler;
         System.out.println("Operating System scheduler has been set.");
     }
 
-    public void run() {
+    public void run()
+    {
         System.out.println("Running an event");
 
         //Initialize processEvent
@@ -28,10 +33,14 @@ public class OperatingSystem extends Observable {
             ProcessEvent processEvent = scheduler.getNextEvent();
 
 
-            while (processEvent != null) {
-                try {
+            while (processEvent != null)
+            {
+                try 
+                {
                     Thread.sleep(1000);
-                } catch (Exception e){
+                } 
+                catch (Exception e)
+                {
 
                 }
                 scheduler.getEvents();

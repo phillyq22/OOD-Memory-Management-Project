@@ -1,4 +1,5 @@
-public interface ProcessSource {
+public interface ProcessSource 
+{
     Process getNextProcess();
     boolean hasNext();
 }

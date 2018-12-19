@@ -1,12 +1,15 @@
-public abstract class MemEvent {
+public abstract class MemEvent 
+{
     protected int time;
     protected Process process;
 
-    public int getTime(){
+    public int getTime()
+    {
         return time;
     }
 
-    public Process getProcess() {
+    public Process getProcess()
+    {
         return process;
     }
 }

@@ -1,6 +1,6 @@
-public abstract class ProcessEvent implements Comparable<ProcessEvent> {
+public abstract class ProcessEvent implements Comparable<ProcessEvent>
+{
     protected int time;
-
 
     public int getTime()
     {
