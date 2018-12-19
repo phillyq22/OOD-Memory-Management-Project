@@ -1,3 +1,15 @@
+package MemoryManager;
+import MemEvent.AddEvent;
+import MemEvent.MemEvent;
+import MemEvent.OOMEvent;
+import MemEvent.RemoveEvent;
+import MemoryManAlgo.MemManAlgo;
+import Process.AllocedProcess;
+import Process.Process;
+import ProcessEvent.AllocEvent;
+import ProcessEvent.DeallocEvent;
+import ProcessEvent.ProcessEvent;
+
 public class MemoryManager 
 {
     private MemManAlgo algorithm;

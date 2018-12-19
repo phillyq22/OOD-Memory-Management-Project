@@ -1,3 +1,6 @@
+package MemoryManAlgo;
+import Process.AllocedProcess;
+
 public class MemoryNode 
 {
     private int size;

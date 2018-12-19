@@ -1,5 +1,9 @@
+package MemoryManAlgo;
 import java.util.LinkedList;
 import java.util.ListIterator;
+
+import Process.AllocedProcess;
+import Process.Process;
 
 public class BestFit implements MemManAlgo 
 {

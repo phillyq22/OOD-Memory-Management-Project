@@ -1,4 +1,10 @@
+package MVC;
 import java.util.Observable;
+
+import MemEvent.MemEvent;
+import MemoryManager.MemoryManager;
+import ProcessEvent.ProcessEvent;
+import Scheduler.Scheduler;
 
 public class OperatingSystem extends Observable
 {

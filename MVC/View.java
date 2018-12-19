@@ -1,3 +1,4 @@
+package MVC;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,6 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+
+import MemEvent.AddEvent;
+import MemEvent.OOMEvent;
+import MemEvent.RemoveEvent;
 
 public class View implements Observer {
     //This scales down the actual values from the memory into a smaller size
