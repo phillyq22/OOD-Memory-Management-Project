@@ -3,4 +3,4 @@
 ![alt text](https://github.com/phillyq22/OOD-Memory-Management-Project/blob/master/Diagrams/MemorySimulationUML.png)
 
 ## Sequence Diagram
-![alt text](https://github.com/phillyq22/OOD-Memory-Management-Project/blob/master/Diagrams/Sequence%20Diagram.png)
+![alt text](https://github.com/phillyq22/OOD-Memory-Management-Project/blob/master/Diagrams/SequenceDiagram.png)
