@@ -46,13 +46,13 @@ public class FakeScheduler implements Scheduler
     {
         switch (arg.getClass().getCanonicalName())
         {
-            case "AddEvent":
+            case "MemEvent.AddEvent":
                 handleAdd((AddEvent)arg);
                 break;
-            case "RemoveEvent":
+            case "MemEvent.RemoveEvent":
                 handleRemove((RemoveEvent)arg);
                 break;
-            case "OOMEvent":
+            case "MemEvent.OOMEvent":
                 handleOOM((OOMEvent)arg);
         }
     }

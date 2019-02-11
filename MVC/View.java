@@ -104,13 +104,13 @@ public class View implements Observer {
     //Determine the type of event received and handle appropriately
     public void update(Observable o, Object arg) {
         switch (arg.getClass().getCanonicalName()){
-            case "AddEvent":
+            case "MemEvent.AddEvent":
                 handleAdd((AddEvent)arg);
                 break;
-            case "RemoveEvent":
+            case "MemEvent.RemoveEvent":
                 handleRemove((RemoveEvent)arg);
                 break;
-            case "OOMEvent":
+            case "MemEvent.OOMEvent":
                 handleOOM((OOMEvent)arg);
                 break;
         }

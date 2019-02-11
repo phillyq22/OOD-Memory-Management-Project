@@ -1,5 +1,7 @@
 package MVC;
+import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Observer;
 
 import MemEvent.MemEvent;
 import MemoryManager.MemoryManager;
@@ -10,6 +12,7 @@ public class OperatingSystem extends Observable
 {
     private MemoryManager memoryManager;
     private Scheduler scheduler;
+    private ArrayList<Observer> observers = new ArrayList<Observer>();
 
     public OperatingSystem() 
     {
@@ -17,6 +20,11 @@ public class OperatingSystem extends Observable
         //add view to observers
     }
 
+    public void addObserver(Observer o)
+    {
+    	observers.add(o);
+    }
+    
     public void setMemoryManager(MemoryManager memoryManager)
     {
         this.memoryManager = memoryManager;
@@ -58,5 +66,16 @@ public class OperatingSystem extends Observable
             }
 
         System.out.println("Finished running");
+    }
+    
+    public void notifyObservers(MemEvent event)
+    {
+    	if(hasChanged())
+    	{
+    		for(Observer o:observers)
+        	{
+        		o.update(this, event);
+        	}
+    	}
     }
 }
